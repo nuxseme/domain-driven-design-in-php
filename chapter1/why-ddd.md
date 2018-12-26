@@ -3,7 +3,7 @@
 
 >* Software priorities are aligned with business priorities.  * With DDD everybody learns and contributes discovering the business domain.* Knowledge no longer belongs just to developers, with DDD everyone knows what is going on with the business.* There are no translations between domain experts, meaning no information loss or tedious syncing. Everyone talks the same language.* The design is the code and the code is the design, the only implemented truth for the common language. Focused on delivering software continuously through agile discovery processes.* DDD provides a framework for strategic and tactical design. Strategic to pin-point the most important areas to develop based on business value and tactical about battle-tested building blocks and patterns.    
 
--
+---
 
 > 软件不仅对程序员有意义，对业务也有意义。DDD强调确保业务和软件使用相同的语言。
 
@@ -14,7 +14,7 @@
 * 设计就是代码，而代码就是设计，唯一实现的真理就是通用语言。专注于通过敏捷发现过程持续交付软件。
 * DDD为战略和战术设计提供了一个框架。战略为开发者指出业务的重点，战术提供模块构建的模式
 
--
+---
 
 * 代码即设计  设计即代码
 * 简化知识传承
