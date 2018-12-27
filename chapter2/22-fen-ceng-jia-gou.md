@@ -1,4 +1,3 @@
-  
 From the code maintainability and reuse perspectives, the best way to make this code a bit easier to
 
 maintain would be splitting up concepts - creating layers for each different concern. In our previous
@@ -11,15 +10,7 @@ orchestration of the previous two. An essential rule of the Layered architecture
 
 may be tightly coupled with the layers beneath it, as shown in the following picture
 
-
-
-![](/assets/1.png)
-
-
-
-
-
-
+![](/assets/layered-architecture.png)
 
 What the layered architecture really seeks is the separation of the different components of an
 
@@ -38,16 +29,4 @@ pattern. It was initially thought and widely-used for building desktop GUI appli
 mainly used in web applications thanks to popular web frameworks like Symfony, Zend Framework
 
 or Codeigniter.
-
-
-
-
-
-
-
-
-
-
-
-
 
