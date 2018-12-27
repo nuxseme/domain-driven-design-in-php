@@ -16,55 +16,41 @@ events published by the write side.
 
 -- Definition of a UI view of a single post with its comments
 
-CREATE TABLE single\_post\_with\_comments \(
-
+```php
+CREATE TABLE single_post_with_comments (
 id INTEGER NOT NULL,
-
-post\_id INTEGER NOT NULL,
-
-post\_title VARCHAR\(100\) NOT NULL,
-
-post\_content TEXT NOT NULL,
-
-post\_created\_at DATETIME NOT NULL,
-
-comment\_content TEXT NOT NULL
-
-\);
+post_id INTEGER NOT NULL,
+post_title VARCHAR(100) NOT NULL,
+post_content TEXT NOT NULL,
+post_created_at DATETIME NOT NULL,
+comment_content TEXT NOT NULL
+);
+```
 
 -- Set up some data
 
-INSERT INTOsingle\_post\_with\_comments\(1,1, "Layered architecture", "Lorem ipsum\
-
-dolor sit amet, ...", NOW\(\), "Lorem ipsum dolor sit amet, ..."\);
-
-INSERT INTOsingle\_post\_with\_comments\(2,1, "Layered architecture", "Lorem ipsum\
-
-dolor sit amet, ...", NOW\(\), "Lorem ipsum dolor sit amet, ..."\);
-
-INSERT INTOsingle\_post\_with\_comments\(3,2, "Hexagonal architecture", "Lorem ips\
-
-um dolor sit amet, ...", NOW\(\), "Lorem ipsum dolor sit amet, ..."\);
-
-INSERT INTOsingle\_post\_with\_comments\(4,2, "Hexagonal architecture", "Lorem ips\
-
-um dolor sit amet, ...", NOW\(\), "Lorem ipsum dolor sit amet, ..."\);
-
-INSERT INTOsingle\_post\_with\_comments\(5,3, "Command - Query Responsability Segg\
-
-regation", "Lorem ipsum dolor sit amet, ...", NOW\(\), "Lorem ipsum dolor sit amet\
-
-, ..."\);
-
-INSERT INTOsingle\_post\_with\_comments\(6,3, "Command - Query Responsability Segg\
-
-regation", "Lorem ipsum dolor sit amet, ...", NOW\(\), "Lorem ipsum dolor sit amet\
-
-, ..."\);
+```php
+INSERT INTOsingle_post_with_comments(1,1, "Layered architecture", "Lorem ipsum\
+dolor sit amet, ...", NOW(), "Lorem ipsum dolor sit amet, ...");
+INSERT INTOsingle_post_with_comments(2,1, "Layered architecture", "Lorem ipsum\
+dolor sit amet, ...", NOW(), "Lorem ipsum dolor sit amet, ...");
+INSERT INTOsingle_post_with_comments(3,2, "Hexagonal architecture", "Lorem ips\
+um dolor sit amet, ...", NOW(), "Lorem ipsum dolor sit amet, ...");
+INSERT INTOsingle_post_with_comments(4,2, "Hexagonal architecture", "Lorem ips\
+um dolor sit amet, ...", NOW(), "Lorem ipsum dolor sit amet, ...");
+INSERT INTOsingle_post_with_comments(5,3, "Command - Query Responsability Segg\
+regation", "Lorem ipsum dolor sit amet, ...", NOW(), "Lorem ipsum dolor sit amet\
+, ...");
+INSERT INTOsingle_post_with_comments(6,3, "Command - Query Responsability Segg\
+regation", "Lorem ipsum dolor sit amet, ...", NOW(), "Lorem ipsum dolor sit amet\
+, ...");
+```
 
 -- Query it
 
-SELECT\*FROM single\_post\_with\_comments WHERE post\_id = 1;
+```php
+SELECT*FROM single_post_with_comments WHERE post_id = 1;
+```
 
 An important feature of this architectural style is that the read model should be completely
 
@@ -74,11 +60,11 @@ read model can be removed and recreated when needed using write model projection
 
 Here we can see some examples of possible views within a blog application
 
-SELECT \* FROM posts\_grouped\_by\_month\_and\_year ORDER BY month DESC, year ASC;
-
-SELECT\*FROM posts\_by\_tags WHERE tag ="ddd";
-
-SELECT\*FROM posts\_by\_author WHERE author\_id = 1;
+```php
+SELECT * FROM posts_grouped_by_month_and_year ORDER BY month DESC, year ASC;
+SELECT*FROM posts_by_tags WHERE tag ="ddd";
+SELECT*FROM posts_by_author WHERE author_id = 1;
+```
 
 It is important to point out that CQRS does not constrain the definition and implementation of the
 
@@ -92,43 +78,27 @@ Following the blog post application, we will use Elasticsearch⁹ \(a document-o
 
 implement a read model.
 
+```
 class PostsController
-
 {
-
-public function listAction\(\)
-
-{
-
-$client=new \Elasticsearch\ClientBuilder::create\(\)-&gt;build\(\);
-
-$response = $client-&gt;search\(\[
-
-'index' =&gt; 'blog-engine',
-
-'type' =&gt; 'posts',
-
-'body' =&gt;\[
-
-'sort' =&gt;\[
-
-'created\_at' =&gt;\['order' =&gt; 'desc'\]
-
-\]
-
-\]
-
-\]\);
-
-return \[
-
-'posts'=&gt; $response
-
-\];
-
+    public function listAction()
+    {
+        $client = new \Elasticsearch\ClientBuilder::create()->build();
+$response = $client->search([
+    'index' => 'blog-engine',
+    'type'  => 'posts',
+    'body'  => [
+        'sort' => [
+            'created_at' => ['order' => 'desc']
+        ]
+    ]
+    ]);
+    return [
+        'posts' => $response
+    ];
+    }
 }
-
-}
+```
 
 The read model code has been drastically simplified to a query to an Elasticsearch index. This reveals
 
@@ -137,8 +107,4 @@ that the read model does not really need an object-relational mapper as doing so
 However, the write model might benefit from the use of an object-relational mapper as they allow
 
 you to organize and structure the read model according to the needs of the application.
-
-
-
-
 
