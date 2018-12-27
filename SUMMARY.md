@@ -11,9 +11,9 @@
   * [1.6 小结](chapter1/warping-up.md)
 * [第二章 架构风格](chapter2/README.md)
   * [2.1 历史](chapter2/history.md)
-  * [2.2 分层架构](chapter2/22-fen-ceng-jia-gou.md)
+  * [2.2 分层架构](chapter2/layered-architecture.md)
     * [2.2.1 模型-视图-控制器](chapter2/mvc.md)
-    * [2.2.2 分层架构示例](chapter2/example-of-layered-architecture.md)
+    * 2.2.2 分层架构示例
       * [2.2.2.1 模型](chapter2/model.md)
       * [2.2.2.2 视图](chapter2/view.md)
       * [2.2.2.3 控制器](chapter2/controller.md)
