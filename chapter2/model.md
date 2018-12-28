@@ -8,6 +8,8 @@ of the application.
 
 
 
+> 不同的概念需要分离。为了如此，所有的层需要被标识在复杂的代码中。在这个过程中，我们可以给予模型层更多的关注，以驱动应用
+
 ```php
 class Post
 {
@@ -34,8 +36,6 @@ class Post
     }
 }
 ```
-
-
 
 ```php
 class PostRepository
@@ -72,10 +72,6 @@ class PostRepository
 }
 ```
 
-
-
-
-
 The Model layer is now defined by a Post class and a PostRepository class. The Post class represents
 
 a blog post and the PostRepository class represents the whole collection of blog posts available.
@@ -83,6 +79,10 @@ a blog post and the PostRepository class represents the whole collection of blog
 Additionally, another layer inside the Model is needed, a layer that coordinates and orchestrates the
 
 domain model behaviour: the Application Layer.
+
+
+
+> 现在模型层通过Post和 PostRepository类来定义。Post代表一个博客文章模型，PostRepository代码整个可用的文章模型。另外，需要一个控制层来协调和编排模型层的行为
 
 
 
@@ -98,8 +98,6 @@ class PostService
 }
 ```
 
-
-
 The PostService is what is known as an Application Service and its purpose is to orchestrate and
 
 organize the domain behaviour. In other words, the Application services are the ones that make
@@ -107,4 +105,16 @@ organize the domain behaviour. In other words, the Application services are the 
 things happen and they are the direct clients of a Domain Model. No other type of object should
 
 be able to directly talk to the internal layers of the Model layer.
+
+
+
+> PostService 作为应用服务层，是为了组织和管理领域的行为。换句话说，应用层服务直接调用领域模型。其他类型的对象不可以直接调用内部的模型层
+
+
+
+* 分层  区域自治
+* 责任隔离 
+* 关系约束
+
+
 
