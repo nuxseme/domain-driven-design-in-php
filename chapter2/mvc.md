@@ -30,9 +30,9 @@ layer and to give a way to trigger changes on the Model’s state.
 
 ![](/assets/mvc.png)
 
+---
 
-
-*  model层任务太重 
+* model层任务太重 
 * 基础设施层未设定
 * 控制层主要负责编排，数据流转
 
