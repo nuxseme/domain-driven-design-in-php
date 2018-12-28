@@ -1,5 +1,13 @@
-The best way of justify a technology or technique is to provide value to the business. Summarising,the main benefits of applying DDD are:
-* Useful and meaningful model of its domain* Domain experts contribute to software design* Better user experience* Clear boundaries* Better architecture organization* Iterative and continuous modeling on agile fashion* Better tools, strategic and tactical
+The best way of justify a technology or technique is to provide value to the business. Summarising,  
+the main benefits of applying DDD are:
+
+* Useful and meaningful model of its domain
+* Domain experts contribute to software design
+* Better user experience
+* Clear boundaries
+* Better architecture organization
+* Iterative and continuous modeling on agile fashion
+* Better tools, strategic and tactical
 
 ---
 
@@ -12,3 +20,14 @@ The best way of justify a technology or technique is to provide value to the bus
 * 更好组织架构
 * 基于敏捷方式的迭代和连续建模
 * 更好的工具，战略和战术
+
+
+
+---
+
+
+
+*  解决复杂业务的一套可选方案
+
+
+
