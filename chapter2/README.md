@@ -24,7 +24,7 @@ that although there are many other existing architecture styles, like Data Fabri
 
 them a bit complex to introduce from the PHP perspective.
 
----
+
 
 构建复杂应用的关键是选个一个适合的架构设计。DDD不依赖任何架构风格，相反我们估计在不同的边界上下文中采用不同的合适的架构来解决不同的问题。架构无关性是DDD的一大特色。举个例子，订单是系统可采用事件溯源去追踪订单操作记录，产品目录可以使用CQRS为不同的客户端提供产品详情，内容管理系统可以使用六边形架构去适配不同的终端
 
