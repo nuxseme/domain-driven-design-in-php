@@ -26,6 +26,16 @@ like with Twig
 >
 > views that make use of the changed Model instances.
 
+
+
+view层可以接受和发送来自model和controller的数据。它的主要目的是展示模型给到UI,模型改变了会刷新数据。通常来讲，在model层和view会使用DTO来流转数据。在收集完所有必要的数据之后才展示。在php领域有很多渲染模板的引擎，如流行的Twig
+
+
+
+> 为什么用DTO取代Model实例
+>
+> 古老而活跃的话题。简而言之，解耦。模型的改变可能破坏所有依赖模型实例的views
+
 ```php
 {% extends "base.html.twig" %}
 {% block content %}
@@ -49,9 +59,6 @@ like with Twig
 {% endblock %}
 ```
 
-  
-
-
 Most of the time, when the Model triggers a state change, it also notifies the related Views so that
 
 the UI can get refreshed. In a typical web scenario the synchronization between the Model and its
@@ -62,6 +69,8 @@ some JavaScript defined interactions are usually needed to maintain that synchro
 
 reason, JavaScript MVC frameworks like the ones below have become widely popular in recent years:
 
+大多数时候，当模型触发状态更改时，它还会通知相关的视图UI可以刷新。在一个典型的web场景中，模型与其之间的同步由于客户机-服务器的特性，表示可能有点棘手。在这种环境中通常需要一些JavaScript定义的交互来维护同步。JavaScript MVC框架，像下面这些，在最近几年变得非常流行:
+
 • AngularJS³
 
 • EmberJS⁴
@@ -69,4 +78,18 @@ reason, JavaScript MVC frameworks like the ones below have become widely popular
 • Marionette⁵
 
 • ReactJS⁶
+
+
+
+---
+
+* DTO  这个在php用的没那么正式 通常返回json，需要前端根据获取的参数和字段处理。接口的响应数据是可以事先定义的
+
+
+
+
+
+
+
+
 
