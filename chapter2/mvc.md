@@ -20,8 +20,6 @@ specific Model representation.
 
 layer and to give a way to trigger changes on the Model’s state.
 
-
-
 > MVC是一种架构模式和范例，它将应用程序划分为三个主要的层:
 >
 > * model: 处理模型的行为。该层管理所有的数据，逻辑和业务。是MVC的核心
@@ -30,11 +28,13 @@ layer and to give a way to trigger changes on the Model’s state.
 >
 > * view:模型层的不同表示，并提供一种方法来触发对模型状态的更改。
 
-
-
-
-
-
-
 ![](/assets/mvc.png)
+
+
+
+*  model层任务太重 
+* 基础设施层未设定
+* 控制层主要负责编排，数据流转
+
+
 
