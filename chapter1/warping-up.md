@@ -17,8 +17,6 @@ look exactly how your software works. During this chapter you have learned:
   have to think in terms of the business. In the end, it is the business customer that is the one
   that has to be pleased.
 
----
-
 实现DDD需要付出努力。如此每个人都可以写出高质量的代码。在这个过程中你将会学习到设计即代码：
 
 * DDD不是关于技术的。关注模型，在当前的业务领域提供有效的价值。每个人开发者，领域专家通过通用语言共享业务知识
