@@ -13,8 +13,6 @@ Domain-Driven Design is an approach for delivering software, focused on three pi
    software deliverables. Tactical design tools produces software that is correct as maps domain
    experts mental model, is testable and less error prone.
 
----
-
 领域驱动设计是一种交付软件的方法，主要关注三个支柱:
 
 1. 无处不在的语言:领域专家和软件开发人员共同努力,构建一个共同的语言正在开发的业务领域。没有“我们对他们”,它总是我们。开发软件是一项商业投资，而不仅仅是成本。努力构建无处不在的语言帮助传播深度域洞察所有的团队成员之一。

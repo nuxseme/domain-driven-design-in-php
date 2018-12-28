@@ -7,8 +7,6 @@ Software should not make sense only for coders but also for the business.DDD emp
 * The design is the code and the code is the design, the only implemented truth for the common language. Focused on delivering software continuously through agile discovery processes.
 * DDD provides a framework for strategic and tactical design. Strategic to pin-point the most important areas to develop based on business value and tactical about battle-tested building blocks and patterns.
 
----
-
 软件不仅对程序员有意义，对业务也有意义。DDD强调确保业务和软件使用相同的语言。
 
 * 软件优先级与业务优先级一致。
