@@ -1,12 +1,4 @@
-Here comes the tricky part. How do we synchronize the read model with the write model? We
-
-already said we would do it by using domain events captured in a write model transaction. For each
-
-type of domain event captured, a specific projection will be executed. So a one-to-one relationship
-
-between domain events and projections will be set.
-
-Let’s have a look at an example of configuring projections, so that we can get a better idea.
+Here comes the tricky part. How do we synchronize the read model with the write model? We already said we would do it by using domain events captured in a write model transaction. For each type of domain event captured, a specific projection will be executed. So a one-to-one relationship between domain events and projections will be set. Let’s have a look at an example of configuring projections, so that we can get a better idea.
 
 ```php
 $client = new \Elasticsearch\ClientBuilder::create()->build();
@@ -28,11 +20,7 @@ $events = [
 $projector->project($event);
 ```
 
-This code is kind of synchronous, but the process can be asynchronous if needed. You could make
-
-your customers aware of this out-of-sync data by placing some alerts.
-
-For the next example, we will use the ampq-lib PHP extension in combination with ReactPHP¹⁰.
+This code is kind of synchronous, but the process can be asynchronous if needed. You could make your customers aware of this out-of-sync data by placing some alerts.For the next example, we will use the ampq-lib PHP extension in combination with ReactPHP¹⁰.
 
 ```php
 // Connect to an AMQP broker
@@ -97,9 +85,7 @@ $consumer->on(
 $loop->run();
 ```
 
-From now on, it could be as simple as making all the needed repositories consume an instance of
-
-the projector and make them invoke the projection process.
+From now on, it could be as simple as making all the needed repositories consume an instance of the projector and make them invoke the projection process.
 
 ```php
 class DoctrinePostRepository implements PostRepository
@@ -131,9 +117,5 @@ class DoctrinePostRepository implements PostRepository
 }
 ```
 
-The Post instance and the recorded events are triggered and persisted in the same transaction.
-
-This ensures that no events are lost, as we will project them to the read model if the transaction
-
-is successful. So, no inconsistencies will exist between the write model and the read model.
+The Post instance and the recorded events are triggered and persisted in the same transaction. This ensures that no events are lost, as we will project them to the read model if the transaction is successful. So, no inconsistencies will exist between the write model and the read model.
 
