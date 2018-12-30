@@ -1,6 +1,4 @@
-This is the true holder of domain behaviour.
-
-Following on with the example, the Repository interface would be simplified to
+This is the true holder of domain behaviour. Following on with the example, the Repository interface would be simplified to
 
 ```php
 interface PostRepository
@@ -13,17 +11,7 @@ interface PostRepository
 }
 ```
 
-Now the PostRepository has been freed from all the read concerns except one, the byId which is
-
-responsible for loading the aggregate by its’ ID so that we can operate on it.
-
-And once this is done, all the query methods are also stripped down from the Post model, leaving
-
-it only with command methods. This means we will effectively get rid of all the getter methods and
-
-any other methods exposing information about it. Instead, domain events will be published in order
-
-to be able to trigger write model projections by subscribing to them.
+Now the PostRepository has been freed from all the read concerns except one, the byId which is responsible for loading the aggregate by its’ ID so that we can operate on it. And once this is done, all the query methods are also stripped down from the Post model, leaving it only with command methods. This means we will effectively get rid of all the getter methods and any other methods exposing information about it. Instead, domain events will be published in order to be able to trigger write model projections by subscribing to them.
 
 ```php
 class AggregateRoot
@@ -80,8 +68,6 @@ class AggregateRoot
     }
 }
 ```
-
-
 
 ```php
 class Post extends AggregateRoot
@@ -164,13 +150,7 @@ class Post extends AggregateRoot
 }
 ```
 
-
-
-All actions that trigger a state change are implemented via domain events. For each domain event
-
-published there is an apply method responsible to reflect the state change
-
-
+All actions that trigger a state change are implemented via domain events. For each domain event published there is an apply method responsible to reflect the state change
 
 ```php
 class Post extends AggregateRoot
