@@ -10,3 +10,29 @@ In our Money object we could add some useful factory methods, such as:
 
 
 
+```php
+class Money
+{
+// ...
+
+    public static function fromMoney(Money $aMoney)
+    {
+        return new self(
+            $aMoney->amount(),
+            $aMoney->currency()
+        );
+    }
+
+    public static function ofCurrency(Currency $aCurrency)
+    {
+        return  new  self(0,  $aCurrency);
+    }
+}
+```
+
+
+
+By using the self keyword we do not couple the code with the class name. As such, a change to the class name or namespace will not effect these factory methods. This small implementation detail aids when refactoring the code at a later date.
+
+
+
