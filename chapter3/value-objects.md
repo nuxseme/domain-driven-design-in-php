@@ -1,0 +1,4 @@
+Value Objects are a fundamental building block in Domain-Driven Design, used to model concepts of your Ubiquitous Language in code. A Value Object is not just a thing in your domain, it measures, quantifies, or describes something. They can be seen as small, simple objects such as money or a date range - whose equality is not based on identity, but instead on the content held.
+
+For example, a product price could be modelled using a Value Object. In this case it is not representing a thing, but instead a value that allows us to measure how much money a product is worth. The memory footprint for these objects is trivial to determine \(calculated by their constituent parts\) and very little overhead. As a result, new instance creation is favoured over reference reuse, even when being used to represent the same value. Equality is then checked based on the comparability of both instances fields.
+
