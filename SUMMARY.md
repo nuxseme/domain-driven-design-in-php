@@ -32,7 +32,7 @@
   * [3.3 货币和钱 示例](chapter3/currency-and-money-example.md)
   * [3.4 特性](chapter3/characteristics.md)
     * [3.4.1 度量 量化 描述](chapter3/measures-quantifies-describes.md)
-      * [3.4.2 不变性](chapter3/immutability.md)
+    * [3.4.2 不变性](chapter3/immutability.md)
     * [3.4.3 整体概念](chapter3/conceptual-whole.md)
     * [3.4.4 数值相等](chapter3/value-equality.md)
     * [3.4.5 可替换性](chapter3/replaceability.md)
