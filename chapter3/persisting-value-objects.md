@@ -21,5 +21,22 @@ class Product
 }
 ```
 
+Assuming you have a Repository for persisting Product Entities, an implementation to create and persist a new Product could look like the following.
+
+Let’s now look at both the ad-hoc ORM and the Doctrine implementations which could be used to persist a Product Entity which contains Value Objects. We will highlight the application of the Embedded Value and Serialized LOB patterns, and the differences between persisting a single Value Object and a collection of them.
+
+```php
+$product = new Product(
+    $productRepository->nextIdentity(), 'Domain-Driven  Design  in  PHP',
+    new  Money(999,  new  Currency('USD'))
+);
+
+$productRepository->persist($product);
+```
+
+> Why Doctrine?
+>
+> Doctrine¹⁰ is a great ORM. It solves 80% of the requirements a PHP application faces. It has a great community. With a correctly-tuned set-up, it can perform the same or even better than a bespoke ORM \(without losing maintainability\). We recommend using Doctrine in most cases when dealing with Entities and business logic. It will save you a lot of time and headaches.
+
 
 
