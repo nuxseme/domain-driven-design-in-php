@@ -8,8 +8,6 @@ In languages with method overloading⁷ such as Java, you can create multiple co
 
 In our Money object we could add some useful factory methods, such as:
 
-
-
 ```php
 class Money
 {
@@ -30,9 +28,42 @@ class Money
 }
 ```
 
-
-
 By using the self keyword we do not couple the code with the class name. As such, a change to the class name or namespace will not effect these factory methods. This small implementation detail aids when refactoring the code at a later date.
+
+> static vs. self
+>
+>  Using static over self can result in undesirable issues when a Value Object inherits from another Value Object.
+
+
+
+Due to this immutability we must consider how to handle mutable actions which are commonplace in a stateful context. If we require a state change, we must now instead return a brand new Value Object representation with this change.
+
+If we want to increase the amount of a Money value object for example, we are required to now instead return a new Money instance with the desired modifications. Fortunately, it is relativity simple to abide by this rule, as shown in the example below.
+
+```php
+class Money
+{
+// ...
+
+    public function increaseAmountBy($anAmount)
+    {
+        return new self(
+            $this->amount()  +  $anAmount,
+            $this->currency()
+        );
+    }
+}
+```
+
+
+
+The object returned by increaseAmountBy is different from the one used to invoke the method. This can be observed in the example comparability checks below.
+
+```php
+$aMoney  =  new  Money(100,  new  Currency('USD'));
+$otherMoney = $aMoney->increaseAmountBy(100); var_dump($aMoney === $otherMoney); // bool(false)
+$aMoney = $aMoney->increaseAmountBy(100); var_dump($aMoney === $otherMoney); // bool(false)
+```
 
 
 
