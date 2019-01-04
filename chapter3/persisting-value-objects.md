@@ -5,7 +5,9 @@ Consider the following Product Entity with a string id, name, and price \(Money 
 ```php
 class Product
 {
-    private $productId; private  $name; private $price;
+    private $productId;
+    private  $name; 
+    private $price;
 
     public function construct(
         $aProductId,
