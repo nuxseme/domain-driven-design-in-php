@@ -17,8 +17,6 @@ Now the PostRepository has been freed from all the read concerns except one, the
 
 现在post - strepository已经从所有读问题中解放出来了，除了一个，byId，它负责以' ID '装载聚合，以便我们可以对其进行操作。一旦完成，所有的查询方法也将从Post模型中剥离出来，只剩下命令方法。这意味着我们将有效地摆脱所有getter方法和任何其他暴露有关它的信息的方法。相反，将发布域事件，以便通过订阅它们来触发写模型投影
 
-
-
 ```php
 class AggregateRoot
 {
