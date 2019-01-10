@@ -1,0 +1,10 @@
+Think about a JavaScript 2D platform game. There are tons of different components interacting with each other on the screen at the same time. There is a component that indicates the number of lives remaining, another one that shows all the points scored, or another one counting down the time remaining to finish the current level. Each time the player jumps on an enemy your points scored get increased. When your scoring goes higher than a certain number of points, you get an extra life. When a player collides against a key, it gets captured and probably a door opens. How all these components interact with each other? What’s the optimal architecture for this scenario?
+
+There are probably two main options: the first one is to couple each component with the ones it is connected to. In the example, the player components would be coupled with too many other components probably. When a new component is added to the game, the developer needs to modify the code of the first one. Do you remember the Open-Closed principle¹? Adding a new component shouldn’t make the first component to be updated. What would happen with too many components? Is it easy to maintain? Not at all.
+
+The second approach is connecting all the components to a single object that handles all the important events in the game. It receives events from each component and it forwards them to specific components. For example, the scoring component would be interested in an EnemyKilled event, or the LifeCaptured event is quite useful for the player entity and the remaining lives component. In this way, all components are coupled to a single component that manages all the notifications. With this approach, adding new components or removing existing ones do not affect the remaining ones.
+
+While developing a single application, events come handy to decoupling components. When developing a whole domain in a distributed way, events are very useful to decouple each service or application that plays a role in the domain. The key points are the same but at a different scale.
+
+
+
