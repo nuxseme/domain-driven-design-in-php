@@ -95,6 +95,8 @@ Do you remember the gamification example? In order to create the users of the ga
 
 
 
+
+
 > Why not the whole User Entity?
 >
 >         Should I include the whole User Entity from my Bounded Context in the Domain Event? Our suggestion, don’t. Domain Events are used to communicate a Bounded Context with itself and other Bounded Contexts. That means, what can be a Seller in a C2C e-commerce product catalog Bounded Context, can be an Author of a product review in a product feedback one. Both can share the same id or email, but Seller and Author are different concepts represented different entities from different Bounded Contexts. So, Entities from one Bounded Context have no meaning or a totally different one in the others.
