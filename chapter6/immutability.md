@@ -8,5 +8,3 @@ Domain Events describe changes in your Domain that have already happened. They t
 
 
 
-
-
