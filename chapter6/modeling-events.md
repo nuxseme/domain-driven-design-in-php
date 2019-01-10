@@ -2,8 +2,6 @@ When modeling Events, name them and their properties according to the Ubiquitous
 
 Let’s consider our user registration feature and the DomainEvent needs to represent that fact. The following code shows a minimal interface for a base DomainEvent.
 
-
-
 ```php
 interface DomainEvent
 {
@@ -43,33 +41,23 @@ class UserRegistered implements DomainEvent
 
 The minimum amount of information to notify about a new user is possibly her UserId. With this information, any process, command or application service, from the same Bounded Context or a different one, may act to this event.
 
-
-
 > As rule of thumb:
 >
+> ```
+> DomainEvents are usually designed as immutable
 >
+> Constructor will initialize the full state of the DomainEvent
 >
->     DomainEvents are usually designed as immutable
+> DomainEvents will have getters to access its attributes
 >
->     Constructor will initialize the full state of the DomainEvent
+> Include the identity of the Aggregate that performs the action
 >
->     DomainEvents will have getters to access its attributes
+> Include other Aggregate identities related with the first one
 >
->     Include the identity of the Aggregate that performs the action
->
->     Include other Aggregate identities related with the first one
->
->     Include parameters that caused the Event if useful
-
-
-
-
-
-
+> Include parameters that caused the Event if useful
+> ```
 
 But, what happens if your Domain experts from the same BC or a different one needs more information? Let’s see the same Domain Event modeled with more information, for example, the email address.
-
-
 
 ```php
 class UserRegistered implements DomainEvent
@@ -100,8 +88,6 @@ class UserRegistered implements DomainEvent
     }
 }
 ```
-
-
 
 We have added the email address. Adding more information to a DomainEvent can help to improve performance or simplify the integration between different Bounded Contexts. Thinking in other Bounded Context point of view could help modeling events. When a new user is created in the upstream Bounded Context, the downstream one would have to create its own user. Adding the user email, could possibly save a sync request to the upstream Bounded Context in the case the downstream one needs it. Let’s see an example.
 
