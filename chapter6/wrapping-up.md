@@ -1,0 +1,2 @@
+Now, the only thing remaining is how to listen for a notification in the messaging system, read it and execute the corresponding Application Service or Command. We’ll see how to do this in the “Integrating Bounded Contexts” and “Application Services” chapters. We have seen the tricks to model a proper DomainEvent with a base interface. We have seen where to publish the DomainEvent, the nearer to the Entities the better, and what strategies to spread those DomainEvents to local and remote Bounded Contexts.
+
