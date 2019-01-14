@@ -23,8 +23,6 @@ the use of the Proxy pattern from Gang of Four comes in handy. We can define an 
 of a repository in terms of the Proxy pattern.
 
 ```php
-
-
 namespace BuyIt\Billing\Infrastructure\FullTextSearching\Elastica;
 use BuyIt\Billing\DomainModel\Order\OrderRepository;
 use BuyIt\Billing\Infrastructure\Persistence\Doctrine\DoctrineOrderRepository;
@@ -66,8 +64,6 @@ class ElasticaOrderRepository implements OrderRepository
 }
 ```
 
-
-
 This example provides a naive implementation using the DoctrineOrderRepository and the Elastica
 
 client, a client to interact with an Elastic server. Note that for some operations we are using the
@@ -78,5 +74,11 @@ of two parts. The first one attempts to store the Order to the Elastic index and
 
 attempts to store the Order into the relational database delegating the operation to the Doctrine
 
+implementation. Take into account that this is just an example and a way to do it. Probably it can
 
+be improved, for example now the whole add operation is synchronous. We could instead enqueue
+
+the operation to some sort of messaging middleware that stores the Order into Elastic, for example.
+
+There are a lot of posibilities and improvements, depending on your needs.
 
