@@ -2,8 +2,6 @@ As an example, if we wanted to replicate the latestPosts query method in our Pos
 
 using a Specification for an in-memory implementation
 
-
-
 ```php
 namespace Infrastructure\Persistence\InMemory;
 use Domain\Model\Post;
@@ -16,14 +14,9 @@ interface InMemoryPostSpecification
 }
 ```
 
-
-
 The in-memory implementation for the latestPosts behaviour could be as follows
 
-
-
 ```php
-
 namespace Infrastructure\Persistence\InMemory;
 use Domain\Model\Post;
 class InMemoryLatestPostSpecification implements InMemoryPostSpecification
@@ -40,17 +33,9 @@ class InMemoryLatestPostSpecification implements InMemoryPostSpecification
 }
 ```
 
-
-
-
-
 The query method for our repository implementation could look as follows
 
-
-
-
-
-```
+```php
 class InMemoryPostRepository implements PostRepository
 {
     /**
@@ -69,13 +54,7 @@ class InMemoryPostRepository implements PostRepository
 }
 ```
 
-
-
-
-
 Retrieving all the latest posts from the repository is as simple as creating a tailored instance of the  above implementation
-
-
 
 ```php
 $latestPosts = $postRepository->query(
