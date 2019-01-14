@@ -2,9 +2,7 @@ Domain Events are one specific type of event used for notifying Domain changes t
 
 Vaughn Vernon defines² a Domain Event as as
 
-```
-an occurrence capture of something what happened in the domain.
-```
+> an occurrence capture of something what happened in the domain.
 
 Eric Evans defines³ a Domain Event as
 
