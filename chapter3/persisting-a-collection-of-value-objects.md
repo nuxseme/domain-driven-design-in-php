@@ -10,10 +10,10 @@ class HistoricalProduct extends Product
      */
     protected $prices;
 
-    public function construct($aProductId, $aName, Money $aPrice, array  $someP\ rices)
+    public  function  construct($aProductId,  $aName,  Money  $aPrice,  array  $someP\ rices)
     {
-        parent::construct($aProductId,  $aName,  $aPrice);
-        $this->setPrices($somePrices);
+    parent::construct($aProductId,  $aName,  $aPrice);
+    $this->setPrices($somePrices);
     }
 
     private function setPrices(array $somePrices)
@@ -33,6 +33,4 @@ class HistoricalProduct extends Product
 HistoricalProduct extends from Product so it inherits the same behaviour plus the price collection functionality.
 
 As in the previous sections, Serialization is a plausible approach if you do not care about querying capabilities, however, Embedded Values should be a possibility if we know exactly how many prices we want to persist. But, what happens if we want to persist a undetermined collection of historical prices?
-
-
 

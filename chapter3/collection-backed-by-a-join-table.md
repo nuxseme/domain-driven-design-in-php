@@ -2,6 +2,8 @@ In the case of needing to persist an Entity with a collection of Value Objects a
 
 The main idea behind the “Join Table” strategy is to create a table that connects the owner Entity and its Value Objects. Let’s see a database representation.
 
+
+
 ```php
 CREATE TABLE `historical_products` (
 `id`  varchar(255)  COLLATE  utf8_unicode_ci  NOT  NULL,
@@ -12,6 +14,8 @@ CREATE TABLE `historical_products` (
 ```
 
 historical\_products table will look the same as products. Remember that HistoricalProduct extends Product Entity in order to easily show how to deal with persisting an collection. A new prices table is now required in order to persist all the different Money Value Objects that a Product Entity can handle.
+
+
 
 ```php
 CREATE TABLE `prices` (
@@ -27,7 +31,6 @@ Finally, a table that relates products and prices is needed.
 
 
 ```php
-
 CREATE TABLE `products_prices` (
 `product_id`  varchar(255)  COLLATE  utf8_unicode_ci  NOT  NULL,
 `price_id`  int(11)  NOT  NULL,
@@ -37,7 +40,6 @@ KEY `IDX_62F8E6734584665A` (`product_id`),
 CONSTRAINT `FK_62F8E6734584665A` FOREIGN KEY (`product_id`) REFERENCES `histor\ ical_products` (`id`),
 CONSTRAINT `FK_62F8E673D614C7E7` FOREIGN KEY (`price_id`) REFERENCES `prices` \ (`id`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
-
 ```
 
 
