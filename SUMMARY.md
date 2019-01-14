@@ -239,7 +239,7 @@
   * [testing infrastructure](chapter13/testing-infrastructure.md)
   * [aggregation so many dependencies](chapter13/aggregation-so-many-dependencies.md)
   * [domain services and notification hexagon edge](chapter13/domain-services-and-notification-hexagon-edge.md)
-  * [let’s recap.md](chapter13/recap.md)
+  * [let’s recap](chapter13/recap.md)
   * [hexagonal architecture](chapter13/hexagonal-architecture.md)
   * [key points](chapter13/key-points.md)
   * [what’s next](chapter13/next.md)
