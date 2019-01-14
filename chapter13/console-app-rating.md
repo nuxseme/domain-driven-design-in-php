@@ -4,10 +4,6 @@ While testing this feature using the web or the API, you realize that it would b
 
 If you are using shell scripts files, I suggest you to check the Symfony Console component. What would the code look like?
 
-
-
-
-
 ```php
 namespace Idy\Console\Command;
 use Symfony\Component\Console\Command\Command;
@@ -41,11 +37,9 @@ class VoteIdeaCommand extends Command
 }
 ```
 
-
-
 Again those 3 lines of code. As before, the UseCase and its business logic remain untouched, we are just providing a new delivery mechanism. Congratulations, you’ve discovered the user side hexagon edge.
 
-                                                                                                    There is still a lot to do. As you may have heard, a real craftsman does TDD. We have already started our story so we must be ok with just testing after.
+There is still a lot to do. As you may have heard, a real craftsman does TDD. We have already started our story so we must be ok with just testing after.
 
 
 
