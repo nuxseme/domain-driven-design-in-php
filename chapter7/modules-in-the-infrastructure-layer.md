@@ -184,7 +184,6 @@ need to create another module, to group the related implementations by the under
 │ ├── RedisOrderRepository.php
 │ └── RedisWaybillRepository.php
 └── tests
-
 ```
 
 This structure and organization of the infrastructure layer is much more maintainable and easier
@@ -193,11 +192,5 @@ to understand than our previous attempt. And we can have a general idea about th
 
 being used in this bounded context.
 
-implementation. Take into account that this is just an example and a way to do it. Probably it can
 
-be improved, for example now the whole add operation is synchronous. We could instead enqueue
-
-the operation to some sort of messaging middleware that stores the Order into Elastic, for example.
-
-There are a lot of posibilities and improvements, depending on your needs.
 
