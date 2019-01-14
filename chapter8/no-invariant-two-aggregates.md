@@ -37,7 +37,6 @@ Indeed, it’s a broken business logic. I know, I know, you can fix that using a
 So, if we want to fix this issue so the same code can work properly in different infrastructures, we need to check if the user exists. Probably, the easiest approach could be in the same Application Service, couldn’t be?
 
 ```php
-
 class MakeWishService
 {
 //...
@@ -67,8 +66,6 @@ class MakeWishService
 
 That could make the trick, but what’s the problem about doing the check in the Application Service? There is no protection about that in our Domain, anyone, inside a Domain Service, any part of the infrastructure, etc. could do something such as the following code.
 
-
-
 ```php
 // Somewhere in your domain
 $nonExistingUserId = new UserId('non-existing-user-id');
@@ -78,10 +75,7 @@ $wish = new Wish(
     $address,
     $content
 );
-
 ```
-
-
 
 If you have already read the Factories chapter you have got the solution too. Factories help us keeping the business invariants and that’s exactly what we need here. There’s an implicit invariant saying that we are not allowed to make a wish without a valid user. Let’s see how a factory can help us.
 
@@ -120,15 +114,11 @@ class MakeWishService
 }
 ```
 
-
-
 As you can see, Users make wishes, so our code does. makeWish is a factory method for building
 
 Wishes. The method returns a new wish build with the UserId.
 
-
-
-```
+```php
 class User
 {
 // ...
@@ -148,18 +138,11 @@ class User
 
 // ...
 }
-
 ```
-
-
 
 Why are we returning a Wish and not just adding the new Wish to an internal collection as we would do with Doctrine probably?
 
-
+
 
 To sum up, in this scenario, User and Wish do not conform an aggregate. Each Entity has its own Repository and they are linked using UserId. Getting all the wishes of a User can be performed by a finder in the wishes Repository.
-
-
-
-
 
