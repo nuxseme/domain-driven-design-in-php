@@ -194,6 +194,7 @@ class Post extends AggregateRoot
 ---
 
 1. 模型行为解耦  ...
+2. 事件记录持久化
 
 
 
