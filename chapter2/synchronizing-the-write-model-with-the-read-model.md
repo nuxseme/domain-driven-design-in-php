@@ -1,10 +1,6 @@
 Here comes the tricky part. How do we synchronize the read model with the write model? We already said we would do it by using domain events captured in a write model transaction. For each type of domain event captured, a specific projection will be executed. So a one-to-one relationship between domain events and projections will be set. Let’s have a look at an example of configuring projections, so that we can get a better idea.
 
-
-
 接下来是棘手的部分。我们如何同步读模型和写模型?我们已经说过，我们将通过使用在写模型事务中捕获的域事件来实现。对于捕获的每种类型的域事件，将执行特定的投影。因此，将设置域事件和投影之间的一对一关系。让我们看一个配置投影的示例，以便更好地理解。
-
-
 
 ```php
 $client = new \Elasticsearch\ClientBuilder::create()->build();
@@ -27,8 +23,6 @@ $projector->project($event);
 ```
 
 This code is kind of synchronous, but the process can be asynchronous if needed. You could make your customers aware of this out-of-sync data by placing some alerts.For the next example, we will use the ampq-lib PHP extension in combination with ReactPHP¹⁰.
-
-
 
 这段代码是同步的，但是如果需要，这个过程可以是异步的。您可以通过放置一些警告来使您的客户意识到这种不同步的数据。在下一个示例中，我们将结合使用ampq-lib PHP扩展和react tphp
 
@@ -135,9 +129,9 @@ The Post instance and the recorded events are triggered and persisted in the sam
 
 Post实例和记录的事件被触发并保存在同一个事务中。这确保不会丢失事件，因为如果事务成功，我们将把它们投射到read模型。因此，写模型和读模型之间不存在不一致性。
 
-
-
 ---
 
-...
+1. 读写模型同步？？
+
+
 
