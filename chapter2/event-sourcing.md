@@ -57,11 +57,7 @@ class EventStorePostRepository implements PostRepository
 
 This is how the implementation of the PostRepository looks like when we use an eventstore to save all the events published by the Post aggregate. Now we need a way to restore an aggregate from its events history. A reconstitute method implemented by the Post aggregate to be used to rebuild a blog post state from triggered events comes in very handy.
 
-
-
 当我们使用eventstore保存Post聚合发布的所有事件时，PostRepository的实现是这样的。现在我们需要一种方法来从事件历史中恢复聚合。由Post聚合实现的用于从触发事件重新构建博客状态的重构方法非常方便
-
-
 
 ```php
 class EventStorePostRepository implements PostRepository
@@ -77,11 +73,7 @@ class EventStorePostRepository implements PostRepository
 
 The eventstore is the work-horse that carries out all the responsibility in regard to saving and restoring eventstreams. Its public API is composed of two simple methods: append and getEvents-From. The former appends an eventstream to the eventstore and the later loads eventstreams to allow aggregate rebuilding. We could use a key-value implementation to store all events
 
-
-
 eventstore是执行保存和恢复eventstreams的所有职责的工作机器。它的公共API由两个简单的方法组成:append和getEvents-From。前者向eventstore追加一个eventstream，而后者加载eventstreams以允许聚合重新构建。我们可以使用键值实现来存储所有事件
-
-
 
 ```php
 <?php
@@ -143,8 +135,6 @@ class EventStore
 
 This eventstore implementation is built upon Redis¹¹, a widely used key-value store. The events are appended in a list using the prefix “events:”. In addition, before persisting the events we extract some metadata like the event class or the creation date, as it will come handy later.Obviously, in terms of performance, it is expensive for an aggregate to go over its full event history to reach its final state all of the time. This is especially the case when an eventstream has hundreds or even thousands of events. The best way to overcome this situation is to take a snapshot from the aggregate and replay only the events in the eventstream since the snapshot was taken. A snapshot  is just a simple serialized version of the aggregate state at a given moment. It can be based on the number of events of the aggregate’s eventstream or time-based. With the first approach, a snapshot will be taken every n triggered events \(every 50, 100 or 200 for example\). With the second approach a snapshot will be taken every n seconds. To follow the example, we will use the first way of snapshotting. In the event’s metadata we store an additional field, the version, from which we will start replaying the aggregate history
 
-
-
 这个eventstore实现是建立在复述¹¹,一种广泛使用的键值存储。事件使用前缀“events:”追加到列表中。此外，在持久化事件之前，我们提取一些元数据，比如事件类或创建日期，因为它在后面会很有用。显然，就性能而言，对一个聚合来说，遍历其整个事件历史并始终达到其最终状态的代价是昂贵的。当一个eventstream有数百个甚至数千个事件时尤其如此。克服这种情况的最佳方法是从聚合中获取快照，并且只重播自快照获取以来eventstream中的事件。快照只是给定时刻聚合状态的简单序列化版本。它可以基于聚合的事件流的事件数量，也可以基于时间。使用第一种方法，将在每n个触发事件\(例如每50、100或200个事件\)中获取快照。第二种方法是每n秒拍一张快照。为了遵循这个例子，我们将使用第一种快照方式。在事件的元数据中，我们存储了另一个字段version，从该字段开始重播聚合历史记录
 
 ```php
@@ -192,8 +182,6 @@ class SnapshotRepository
 
 And now we need to refactor the EventStore class so that it starts using the SnapshotRepository to load the aggregate with acceptable performance times
 
-
-
 现在我们需要重构EventStore类，以便它开始使用SnapshotRepository以可接受的性能时间加载聚合
 
 ```php
@@ -217,8 +205,6 @@ class EventStorePostRepository implements PostRepository
 ```
 
 We just need to take aggregate snapshots periodically. We could do this synchronously or asynchronously by a process responsible for monitoring the eventstore.The following code is a simple example demonstrating the implementation of aggregate snapshotting.
-
-
 
 我们只需要定期地进行聚合快照。我们可以通过负责监视eventstore的进程来同步或异步地完成此操作。下面的代码是一个简单的示例，演示了聚合快照的实现
 
@@ -253,5 +239,7 @@ class EventStorePostRepository implements PostRepository
 
 ---
 
-...
+1. 快照+事件=&gt;下一个快照
+
+
 
