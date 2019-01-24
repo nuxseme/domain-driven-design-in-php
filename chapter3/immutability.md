@@ -6,8 +6,6 @@ It is also good to point out that it is not recommended to hold references to en
 
 In languages with method overloading⁷ such as Java, you can create multiple constructors with the same name. Each of these constructors are provided with different options to build the same type of resulting object. In PHP, we are able to provide a similar capability by way of factory methods⁸.
 
-
-
 这是要掌握的值对象最重要的方面之一。对象值在其生命周期内不应被更改。由于这种不变性，值对象很容易推理、测试，并且没有不希望的/意外的副作用。
 
 因此，值对象应该通过其构造函数创建。为了构建一个，您通常通过这个构造函数传递所需的基本类型或其他值对象。值对象总是处于有效状态，这就是为什么我们在单个原子步骤中创建它们。具有多个setter和getter的空构造函数将创建责任转移到客户端，导致贫血域模型，它被认为是一个反模式。
@@ -15,8 +13,6 @@ In languages with method overloading⁷ such as Java, you can create multiple co
 还需要指出的是，不建议在值对象中保存对实体的引用。实体是可变的，因此这可能导致在值对象中出现不希望出现的副作用。
 
 在方法重载的语言中，比如Java，你可以用相同的名字创建多个构造函数。每个构造函数都提供了不同的选项来构建相同类型的结果对象。在PHP中，我们可以通过工厂方法提供类似的功能。
-
-
 
 In our Money object we could add some useful factory methods, such as:
 
@@ -44,8 +40,6 @@ By using the self keyword we do not couple the code with the class name. As such
 
 通过使用self关键字，我们不会将代码与类名结合起来。因此，对类名或名称空间的更改不会影响这些工厂方法。这个小的实现细节有助于以后重构代码。
 
-
-
 > static vs. self
 >
 > Using static over self can result in undesirable issues when a Value Object inherits from another Value Object.
@@ -56,13 +50,9 @@ Due to this immutability we must consider how to handle mutable actions which ar
 
 If we want to increase the amount of a Money value object for example, we are required to now instead return a new Money instance with the desired modifications. Fortunately, it is relativity simple to abide by this rule, as shown in the example below.
 
-
-
 由于这种不可变性，我们必须考虑如何处理在有状态上下文中常见的可变操作。如果我们需要更改状态，那么现在必须返回一个全新的值对象表示形式。
 
 例如，如果我们想增加货币值对象的数量，我们现在需要返回一个新的货币实例，并进行所需的修改。幸运的是，遵守这个规则是相对简单的，如下面的例子所示。
-
-
 
 ```php
 class Money
