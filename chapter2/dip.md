@@ -18,36 +18,22 @@ By using the Dependency Inversion Principle, the architecture schema changes and
 
 抛开概念，DIP其实就是用来减少依赖细节的。转而依赖抽象，依赖接口。再由子类继承实现接口。而且抽象的类表示一个整体的概念，适合在代码中传递。
 
-高层模块不应该依赖底层模块的例子：  
+高层模块不应该依赖底层模块的例子：
 
-
+```php
 CarService {
-
-     AbstractCar::run\(\)
-
+ AbstractCar::run()
 }
-
 fengtianCar extend AbstractCar {
-
- run\(\)
-
+run()
 }
-
 benziCar extend AbstractCar{
-
-  run\(\)
-
+run()
 }
-
 AbstractCar{
-
-  run\(\);
-
+run();
 }
-
-
+```
 
 各种汽车是底层模块，调用这些汽车类不应该在service 实例化依赖这些汽车，转而应该依赖抽象的汽车类，这样新来一个汽车类集成抽象的汽车类就可以了
-
-
 
