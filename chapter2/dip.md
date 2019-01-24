@@ -21,16 +21,16 @@ By using the Dependency Inversion Principle, the architecture schema changes and
 高层模块不应该依赖底层模块的例子：
 
 ```php
-CarService {
+class CarService {
  AbstractCar::run()
 }
-fengtianCar extend AbstractCar {
+class fengtianCar extend AbstractCar {
 run()
 }
-benziCar extend AbstractCar{
+class benziCar extend AbstractCar{
 run()
 }
-AbstractCar{
+abstract AbstractCar{
 run();
 }
 ```
