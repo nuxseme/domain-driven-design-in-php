@@ -6,3 +6,9 @@ The essence of a Domain Event is that you use it to capture things that can trig
 
 领域事件的本质是，您可以使用它来捕获可以触发对正在开发的应用程序状态的更改的事件，或对这些更改感兴趣的领域内其他应用程序的更改。然后处理这些事件对象以引起对系统的更改，并存储它们以提供审计日志。
 
+---
+
+1. 事件不变性
+
+
+
