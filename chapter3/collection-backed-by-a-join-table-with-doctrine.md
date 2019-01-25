@@ -8,12 +8,11 @@ In this scenario, we recommend to use the first option. Let’s review the chang
 
 Money Value Object.
 
-
-
 ```php
 class Money
 {
-    private $amount; private $currency;
+    private $amount; 
+    private $currency;
 
     private $surrogateId;
     private $surrogateCurrencyIsoCode;
@@ -56,13 +55,9 @@ class Money
 }
 ```
 
-
-
 As seen, two new attributes have been added. The first one, surrogateId is not used by our Domain, but is required for the persistence infrastructure to persist this Value Object as an Entity in our Database. The second one, surrogateCurrencyIsoCode holds the ISO code for the currency. Using these new attributes it is really easy to map our Value Object with Doctrine.
 
 The Money mapping is quite straight forward.
-
-
 
 ```php
 <?xml version="1.0" encoding="utf-8"?>
@@ -78,8 +73,6 @@ The Money mapping is quite straight forward.
 ```
 
 Using Doctrine, the HistoricalProduct Entity would have following mapping.
-
-
 
 ```php
 <?xml version="1.0" encoding="utf-8"?>
