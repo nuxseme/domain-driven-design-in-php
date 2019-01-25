@@ -2,3 +2,5 @@ Consider the differences in the Ubiquitous Language when we discuss the side eff
 
 
 
+考虑的差异无处不在的语言当我们讨论迁移客户的副作用,这一事件使概念明确,正如前面的变化会发生在一个聚合或多个总量之间都作为一个隐含的概念,需要探索和定义。例如，在大多数系统中，副作用的发生仅仅是由Hibernate或实体框架等工具发现的，如果用例的副作用发生了变化，那么它就是一个隐式概念。事件的引入使概念变得明确，成为普遍语言的一部分;重新定位客户不仅仅是改变一些东西，重新定位客户还会产生CustomerRelocatedEvent，它是在语言中显式定义的。
+
