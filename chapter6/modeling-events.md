@@ -2,6 +2,12 @@ When modeling Events, name them and their properties according to the Ubiquitous
 
 Let’s consider our user registration feature and the DomainEvent needs to represent that fact. The following code shows a minimal interface for a base DomainEvent.
 
+在建模事件时，根据事件起源的有限上下文中普遍存在的语言来命名它们及其属性。如果事件是在聚合上执行命令操作的结果，则该名称通常派生自所执行的命令。重要的是，事件名称要反映事件的过去性质。现在还没有。它发生之前。最好的选择是反映这一事实的名字。
+
+
+
+让我们考虑一下用户注册特性，DomainEvent需要表示这个事实。下面的代码显示了基本DomainEvent的最小接口。
+
 ```php
 interface DomainEvent
 {
