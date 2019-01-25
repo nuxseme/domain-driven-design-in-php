@@ -22,8 +22,6 @@ Let’s model now the new user registration event. The following code could be u
 
 如前所述，为了知道事件发生的时间，所需的最小信息是一个DateTime。
 
-
-
 现在让我们为新用户注册事件建模。可以使用下面的代码来建模一个事件，该事件表示在我们的应用程序中注册了一个新用户。正如前面所解释的，名称应该是过去时态的动词，所以UserRegistered可能是一个不错的选择。
 
 ```php
@@ -57,25 +55,37 @@ The minimum amount of information to notify about a new user is possibly her Use
 >
 > DomainEvents are usually designed as immutable
 >
->
->
 > Constructor will initialize the full state of the DomainEvent
->
->
 >
 > DomainEvents will have getters to access its attributes
 >
->
->
 > Include the identity of the Aggregate that performs the action
->
->
 >
 > Include other Aggregate identities related with the first one
 >
->
->
 > Include parameters that caused the Event if useful
+>
+> domainevent通常被设计成不可变的
+>
+>
+>
+> 构造函数将初始化DomainEvent的完整状态
+>
+>
+>
+> DomainEvents将具有访问其属性的getter
+>
+>
+>
+> 包括执行操作的聚合的标识
+>
+>
+>
+> 包括与第一个相关的其他聚合标识
+>
+>
+>
+> 如果有用，包括导致事件的参数
 
 But, what happens if your Domain experts from the same BC or a different one needs more information? Let’s see the same Domain Event modeled with more information, for example, the email address.
 
