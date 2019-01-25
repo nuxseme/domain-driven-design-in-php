@@ -33,7 +33,9 @@ In general, constructing an object from plain data such as an array is called hy
 ```php
 class User
 {
-    protected $userId; protected $email; protected $password;
+    protected $userId; 
+    protected $email; 
+    protected $password;
 
     public function construct(UserId $userId, $email, $password)
     {
