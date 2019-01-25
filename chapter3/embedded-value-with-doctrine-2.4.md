@@ -5,9 +5,12 @@ So what is an acceptable solution for using embedded values with Doctrine &lt; 2
 ```php
 class Product
 {
-    protected $productId; protected $name; protected $price;
+    protected $productId; 
+    protected $name; 
+    protected $price;
 
-    protected $surrogateCurrencyIsoCode; protected $surrogateAmount;
+    protected $surrogateCurrencyIsoCode; 
+    protected $surrogateAmount;
 
     public function construct($aProductId, $aName, Money $aPrice)
     {
