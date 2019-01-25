@@ -74,7 +74,7 @@
     * [4.4.2 映射实体](chapter4/mapping-entities.md)
       * [4.4.2.1 用注释映射实体](chapter4/mapping-entities-using-annotated-code.md)
       * [4.4.2.2 xml映射实体](chapter4/mapping-entities-using-xml.md)
-  * [4.5 测试实体.md](chapter4/testing-entities.md)
+  * [4.5 测试实体](chapter4/testing-entities.md)
   * [4.6 校验](chapter4/validation.md)
     * [4.6.1 属性校验](chapter4/attribute-validation.md)
     * [4.6.2 实体对象校验](chapter4/entire-object-validation.md)
