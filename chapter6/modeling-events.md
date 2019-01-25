@@ -4,8 +4,6 @@ Let’s consider our user registration feature and the DomainEvent needs to repr
 
 在建模事件时，根据事件起源的有限上下文中普遍存在的语言来命名它们及其属性。如果事件是在聚合上执行命令操作的结果，则该名称通常派生自所执行的命令。重要的是，事件名称要反映事件的过去性质。现在还没有。它发生之前。最好的选择是反映这一事实的名字。
 
-
-
 让我们考虑一下用户注册特性，DomainEvent需要表示这个事实。下面的代码显示了基本DomainEvent的最小接口。
 
 ```php
@@ -21,6 +19,12 @@ interface DomainEvent
 As seen, the minimum information required is a DateTime in order to know when the event happened.
 
 Let’s model now the new user registration event. The following code could be used in order to model an event representing the fact that a new user has been registered in our application. As explained before, the name should be a verb in the past tense, so UserRegistered is probably a good choice.
+
+如前所述，为了知道事件发生的时间，所需的最小信息是一个DateTime。
+
+
+
+现在让我们为新用户注册事件建模。可以使用下面的代码来建模一个事件，该事件表示在我们的应用程序中注册了一个新用户。正如前面所解释的，名称应该是过去时态的动词，所以UserRegistered可能是一个不错的选择。
 
 ```php
 class UserRegistered implements DomainEvent
@@ -47,21 +51,31 @@ class UserRegistered implements DomainEvent
 
 The minimum amount of information to notify about a new user is possibly her UserId. With this information, any process, command or application service, from the same Bounded Context or a different one, may act to this event.
 
+通知新用户的最小信息量可能是她的用户id。有了这些信息，来自相同或不同有界上下文的任何进程、命令或应用程序服务都可以对该事件进行操作。
+
 > As rule of thumb:
 >
-> ```
 > DomainEvents are usually designed as immutable
+>
+>
 >
 > Constructor will initialize the full state of the DomainEvent
 >
+>
+>
 > DomainEvents will have getters to access its attributes
+>
+>
 >
 > Include the identity of the Aggregate that performs the action
 >
+>
+>
 > Include other Aggregate identities related with the first one
 >
+>
+>
 > Include parameters that caused the Event if useful
-> ```
 
 But, what happens if your Domain experts from the same BC or a different one needs more information? Let’s see the same Domain Event modeled with more information, for example, the email address.
 
