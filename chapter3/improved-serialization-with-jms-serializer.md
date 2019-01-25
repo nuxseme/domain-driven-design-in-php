@@ -25,3 +25,11 @@ Check the Mapping Reference¹⁵ and the Cookbook¹⁶ for more information. JMS
 
 检查映射参考¹⁵和食谱¹⁶获得更多信息。JMS序列化器在任何DDD项目中都是必须的。
 
+
+
+---
+
+1. 序列化和反序列化解耦命名空间的依赖
+
+
+
