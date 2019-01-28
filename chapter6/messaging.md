@@ -3,7 +3,6 @@ With all DomainEvents persisted into the database, the only thing remaining to s
 First of all, we need a service capable of sending persisted DomainEvents to RabbitMQ. That could be easy, what about querying EventStore for all the events and send each one? Not bad, however, we could push the same DomainEvent more than once. In general, we need to minimize the number of DomainEvents republished. If zero times, even better. In order to do that, we need some sort of component to track what DomainEvents have been already pushed and what are the remaining ones. Last but not least, once we know what DomainEvents we have to push, we send the and keep track of the last one published into our messaging system. Let’s see a possible implementation for this service:
 
 ```php
-
 class NotificationService
 {
     private $serializer;
@@ -11,8 +10,10 @@ class NotificationService
     private $publishedMessageTracker;
     private $messageProducer;
 
-    public function construct( EventStore $anEventStore,
-        PublishedMessageTracker $aPublishedMessageTracker, MessageProducer $aMessageProducer
+    public function construct( 
+        EventStore $anEventStore,
+        PublishedMessageTracker $aPublishedMessageTracker, 
+        MessageProducer $aMessageProducer
     )
     {
         $this->eventStore = $anEventStore;
@@ -88,7 +89,8 @@ class NotificationService
     }
     private function publish(
         $exchangeName,
-        StoredEvent $notification, MessageProducer $messageProducer
+        StoredEvent $notification, 
+        MessageProducer $messageProducer
     )
     {
         $messageProducer->send(
@@ -111,7 +113,8 @@ class NotificationService
         return $this->serializer;
     }
 
-    private function trackMostRecentPublishedMessage( PublishedMessageTracker $publishedMessageTracker,
+    private function trackMostRecentPublishedMessage( 
+        PublishedMessageTracker $publishedMessageTracker,
         $exchangeName,
         $notification
     )
@@ -127,14 +130,14 @@ NotificationService depends on three interfaces. We have already seen EventStore
 interface PublishedMessageTracker
 {
     /**
-    @param string $exchangeName
-    @return int
+     *@param string $exchangeName
+     *@return int
      */
     public function mostRecentPublishedMessageId($exchangeName);
 
     /**
-    @param string $exchangeName
-    @param StoredEvent $notification
+     *@param string $exchangeName
+     *@param StoredEvent $notification
      */
     public  function  trackMostRecentPublishedMessage($exchangeName,  $notification);
 }
@@ -142,14 +145,12 @@ interface PublishedMessageTracker
 
 mostRecentPublishedMessageId method returns the id of last PublishedMessage, so the process can start from the next one. trackMostRecentPublishedMessage is responsible for tracking what’s the last message sent, in order to be able to republish messages in case you need it. $exchangeName represents what communication channel we are going to use to send out our DomainEvents. Let’s see a Doctrine implementation of PublishedMessageTracker.
 
-
-
 ```php
 class DoctrinePublishedMessageTracker extends   EntityRepository implements PublishedMessageTracker
 {
     /**
-    @param $exchangeName
-    @return int
+     *@param $exchangeName
+     *@return int
      */
     public function mostRecentPublishedMessageId($exchangeName)
     {
@@ -162,8 +163,8 @@ class DoctrinePublishedMessageTracker extends   EntityRepository implements Publ
     }
 
     /**
-    @param $exchangeName
-    @param StoredEvent $notification
+     *@param $exchangeName
+     *@param StoredEvent $notification
      */
     public  function  trackMostRecentPublishedMessage($exchangeName,  $notification)
     {
@@ -193,17 +194,11 @@ This code is quite straightforward. The only edge case, we have to consider, is 
 
 has been published already.
 
-
-
 > Why an exchange name?
 >
 > We’ll see this in more detail in the “Integrating Bounded Contexts” chapter. However, when a system is running and a new Bounded Context comes into play, you are interested in resending all the DomainEvents to the new BC. So keeping track of the last DomainEvent published and channel is interesting.
 
-
-
 In order to keep track of published DomainEvents, we need an exchange name and a notification id. Check a possible implementation.
-
-
 
 ```php
 class PublishedMessage
@@ -239,11 +234,7 @@ class PublishedMessage
 }
 ```
 
-
-
 And its corresponding mapping.
-
-
 
 ```php
 Ddd\Domain\Event\PublishedMessage: type: entity
@@ -285,7 +276,7 @@ interface MessageProducer
 }
 ```
 
-Quite easy. The open and close methods open and close a connection with the messaging system. send takes a message body, message name and message id and sends them to our messaging engine whatever it is. Because we have chosen RabbitMQ, we need to implement the connection and sending 
+Quite easy. The open and close methods open and close a connection with the messaging system. send takes a message body, message name and message id and sends them to our messaging engine whatever it is. Because we have chosen RabbitMQ, we need to implement the connection and sending
 
 ```php
 abstract class RabbitMqMessaging
@@ -363,11 +354,7 @@ class RabbitMqMessageProducer extends RabbitMqMessaging implements MessageProduc
 }
 ```
 
-
-
 Now that we have a DomainService to push DomainEvents into a messaging system like RabbitMQ, it’s time to execute them. We need to choose a delivery mechanism to run the service. We personally suggest to create a Symfony Console¹² Command.
-
-
 
 ```php
 class PushNotificationsCommand extends Command
@@ -402,13 +389,7 @@ class PushNotificationsCommand extends Command
 }
 ```
 
-
-
-
-
 Following the Silex example, let’s see the definition of the $app\['notification\_service'\] defined in the Silex Pimple Service Container¹³.
-
-
 
 ```php
 //...
@@ -436,11 +417,5 @@ $app['notification_service']  =  $app->share(function($app)  {
 //...
 ```
 
-
-
-
-
 PHP is not good for long-running processes because of memory leaking. If you need to have a command running for a long time, taking events and pushing them into RabbitMQ there are some options. You need to guarantee that your process is running and running properly. Sometimes, the process is running but the connection with RabbitMQ gets lost. The process goes into a zombie mode. We personally recommend to limit the amount of work that the worker has to do, 1000 items at a time, and finish the process. Then let tools such as Supervisor¹⁴ rerun your job if it finds that it’s not running.
-
-
 
