@@ -2,6 +2,10 @@ Doctrine offers multiple formats for the mapping like YAML, XML or annotations. 
 
 preferred choice as it provides robust IDE auto-completion.
 
+Doctrine为映射提供多种格式，如YAML、XML或注释。XML是我们
+
+首选选项，因为它提供了健壮的IDE自动完成功能。
+
 ```php
 <?xml version="1.0" encoding="UTF-8"?>
 <doctrine-mapping
