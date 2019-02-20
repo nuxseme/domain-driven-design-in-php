@@ -1,9 +1,8 @@
 In the case of this repository we will only need the EntityManager to retrieve domain objects directly from the database
 
-
+对于这个存储库，我们只需要EntityManager直接从数据库检索域对象
 
 ```php
-
 namespace Infrastructure\Persistence\Doctrine;
 
 use Doctrine\ORM\EntityManager;
@@ -51,7 +50,6 @@ class DoctrinePostRepository implements PostRepository
         return new PostId();
     }
 }
-
 ```
 
 
