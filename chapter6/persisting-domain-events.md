@@ -8,15 +8,13 @@ Persisting events is always a good idea. Some readers may be thinking why not pu
 * Audit your entity changes
 * For Event Sourcing, you can reconstitute Aggregates from Domain Events
 
-
-
 * 您可以以REST方式为其他BC公开域事件
-* 在将域事件和聚合更改推送到RabbitMQ之前，您可以在相同的数据库事务中持久保存域事件和聚合更改\(不是吗?我不想把没有发生的事告诉任何人。你不想错过已经发生的事情的通知
+
+* 在将域事件和聚合更改推送到RabbitMQ之前，您可以在相同的数据库事务中持久保存域事件和聚合更改\(不想把没有发生的事告诉任何人。不想错过已经发生的事情的通知）
+
 * 商业智能可以使用这些数据来分析、预测或趋势
 * 审计实体更改
 * 对于事件来源，您可以从域事件重新构建聚合
-
-
 
 
 
