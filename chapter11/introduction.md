@@ -2,9 +2,11 @@ The Application layer is the area that separates the Domain Model from the clien
 
 In this chapter, we will explore how to implement Application Services, understanding the role of the Command Pattern and establishing the responsibilities of an Application Service. Consider the use case of signing up a new user.
 
+应用层是将域模型与查询或更改其状态的客户机分隔开的区域。应用程序服务是这一层的构建块。正如Vaughn Vernon所说，“应用程序服务是域模型的直接客户端”。您可以将应用程序服务看作外部世界\(html表单、API客户机、命令行、框架、UI等\)和域模型本身之间的接触点。这可能有助于思考您的系统向世界公开的顶级用例“作为客户，我想注册”、“作为已登录用户，我想购买产品”等等。
+
+在本章中，我们将探讨如何实现应用程序服务、理解命令模式的作用以及确定应用程序服务的职责。考虑注册新用户的用例。
+
 Conceptually, in order to register a new user we need to:
-
-
 
 * Get an email and password from the client
 * Check if the email is already in use
@@ -14,5 +16,13 @@ Conceptually, in order to register a new user we need to:
 
 Let’s go for it.
 
+从概念上讲，为了注册新用户，我们需要:
 
+* 从客户端获取电子邮件和密码
+* 检查邮件是否已经在使用中
+* 创建一个新用户
+* 将此新用户添加到现有用户集
+* 返回我们刚刚创建的用户
+
+让我们开始吧。
 
