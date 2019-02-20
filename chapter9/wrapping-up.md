@@ -1,4 +1,4 @@
 Factories are a powerful tool for decoupling construction logic from our business logic. The Factory Method pattern not only helps moving creation responsibility to the Aggregate Root but also could force domain invariants. Using the Abstract Factory pattern in our Services allows us to separate our domain logic from infrastructure creation details. A common use case for this are Specifications and their respective persistence implementations. We’ve seen that factories come very handy on our test suites too. While we could extract building logic into Object Mother Factories, Test Data Builders provide more flexibility for our tests.
 
-
+工厂是将构造逻辑与业务逻辑解耦的强大工具。工厂方法模式不仅有助于将创建责任转移到聚合根，还可以强制使用域不变量。在服务中使用抽象工厂模式允许我们将域逻辑与基础设施创建细节分离开来。这方面的一个常见用例是规范及其各自的持久性实现。我们已经看到工厂在我们的测试套件上也非常方便。虽然我们可以将构建逻辑提取到对象母工厂中，但是测试数据构建器为我们的测试提供了更多的灵活性。
 
