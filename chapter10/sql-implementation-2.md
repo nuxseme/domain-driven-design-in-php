@@ -4,7 +4,7 @@ pre-load all the domain objects in-memory for a SQL implementation, we need a mo
 
 specification for these cases.
 
-
+Astandard规范可以很好地用于内存实现。然而，我们没有为SQL实现预加载内存中的所有域对象，我们需要一个更具体的这些情况的规范。
 
 ```php
 namespace Infrastructure\Persistence\Sql;
@@ -17,11 +17,9 @@ interface SqlPostSpecification
 }
 ```
 
-
-
 The SQL implementation for this specification could look like
 
-
+该规范的SQL实现如下所示
 
 ```php
 namespace Infrastructure\Persistence\Sql;
@@ -39,13 +37,9 @@ class SqlLatestPostSpecification implements SqlPostSpecification
 }
 ```
 
-
-
-
-
 And how to query an SQL Post repository implementation
 
-
+以及如何查询SQL Post存储库实现
 
 ```php
 class SqlPostRepository implements PostRepository
