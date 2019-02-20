@@ -10,7 +10,7 @@ Once complete, the Facade ends the interaction by committing the transaction. If
 
 wrong, the transaction is rolled back.
 
-
+域模型不是管理事务的地方。在域上应用的操作模型应该与持久性机制无关。一种解决这个问题的通用方法在应用层放置Facade，将相关用例分组在一起。当一个方法从用户界面层调用Facade的，业务方法开始一个事务。一旦完成，Facade通过提交事务来结束交互。如果任何事情发生错误，事务回滚。
 
 ```php
 use Doctrine\ORM\EntityManager;
@@ -35,13 +35,13 @@ class SomeApplicationServiceFacade
 }
 ```
 
-
-
 The problem introduced with facades is that we have to repeat the same boilerplate code over and
 
 over. If we unify the way we execute use cases, we could wrap them in a transaction using the
 
 Decorator Pattern
+
+facades引入的问题是，我们必须在和上重复相同的样板代码结束了。如果我们统一执行用例的方式，我们可以使用装饰器模式
 
 ```php
 interface ApplicationService
@@ -62,12 +62,11 @@ class SomeApplicationService implements ApplicationService
 }
 ```
 
-
-
 We do not want to couple our Application Layer with the concrete transactional procedure, so instead we can create a simple interface for it
 
-```php
+我们不希望应用程序层与具体的事务过程耦合，因此我们可以为它创建一个简单的接口
 
+```php
 interface TransactionalSession
 {
     /**
@@ -80,7 +79,7 @@ interface TransactionalSession
 
 The implemented decorator that can make any application service transactional is as easy as the following
 
-
+可以使任何应用程序服务具有事务性的已实现的装饰器如下所示
 
 ```php
 class TransactionalApplicationService implements ApplicationService
@@ -104,11 +103,9 @@ class TransactionalApplicationService implements ApplicationService
 }
 ```
 
-
-
 Following this, we could alternatively create a Doctrine transactional session implementation
 
-
+接下来，我们可以创建一个Doctrine事务会话实现
 
 ```php
 class DoctrineSession implements TransactionalSession
@@ -127,7 +124,7 @@ class DoctrineSession implements TransactionalSession
 
 Now we have everything to execute our Use Cases within a transaction
 
-
+现在我们有了在事务中执行用例的一切
 
 ```php
 $useCase = new TransactionalApplicationService(
