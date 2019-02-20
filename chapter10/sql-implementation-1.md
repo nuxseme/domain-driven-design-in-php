@@ -1,5 +1,7 @@
 In a classic example, we could create a simple PDO⁹ implementation for our PostRepository just by using plain SQL queries.
 
+在一个典型的例子中，我们可以使用普通的SQL查询为PostRepository创建一个简单的PDO实现。
+
 ```php
 namespace Infrastructure\Persistence\Sql;
 use Domain\Model\Body;
@@ -81,9 +83,9 @@ _date', [
 }
 ```
 
-
-
 As we do not have any mapping configuration, it would be very useful to have an initialisation method for the schema within the same class. Things that change together should remain together.
+
+由于我们没有任何映射配置，所以在同一个类中为模式提供一个初始化方法是非常有用的。一起改变的事物应该保持在一起。
 
 ```php
 class SqlPostRepository implements PostRepository
@@ -102,7 +104,6 @@ SQL
         );
     }
 }
-
 ```
 
 
