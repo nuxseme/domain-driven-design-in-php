@@ -1,10 +1,8 @@
 Redis⁷ is an in-memory blazing-fast key-value that can be used as a cache or store. Depending on the circumstances we could consider using Redis as a store for our Aggregates. To get started, make sure you have a PHP client to connect to Redis. A good one is Predis⁸.
 
-
+Redis是一种在内存中快速启动的键值，可以用作缓存或存储。根据情况，我们可以考虑使用Redis作为聚合的存储。首先，确保您有一个PHP客户机要连接到Redis。Predis是一个好例子。
 
 composer require predis/predis:~1.0
-
-
 
 ```php
 namespace Infrastructure\Persistence\Redis;
