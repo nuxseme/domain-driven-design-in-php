@@ -2,6 +2,10 @@ Creating a request from the delivery mechanism, your favourite framework, should
 
 With Symfony, we can extract the data we need from Request object from the HttpFoundation component.
 
+从交付机制\(您最喜欢的框架\)创建请求应该非常简单。在web上，您可以从控制器请求中获取参数，并将它们传递给DTO中的服务。同样的原理也适用于CLI命令，读取输入参数并再次发送它们。
+
+使用Symfony，我们可以从HttpFoundation组件的Request对象中提取所需的数据。
+
 ```php
 //...
 class UsersController extends Controller
@@ -25,10 +29,9 @@ class UsersController extends Controller
 
 On a more elaborated Silex application that uses the Form component to capture and validate parameters
 
-
+在一个更详细的Silex应用程序上，该应用程序使用表单组件捕获和验证参数
 
 ```php
-
 $app->match('/signup', function (Request $request) use ($app) {
     $form = $app['sign_up_form'];
     $form->handleRequest($request);
