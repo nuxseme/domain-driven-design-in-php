@@ -32,9 +32,9 @@ It’s clear that they should be placed into the Infrastructure folder, but wher
 │ │ ├── WaybillRepository.php
 │ │ └── WaybillWasGenerated.php
 │ └── Infrastructure
-│ ├── DoctrineBillRepository.php
-│ ├── DoctrineOrderRepository.php
-│ └── DoctrineWaybillRepository.php
+│   ├── DoctrineBillRepository.php
+│   ├── DoctrineOrderRepository.php
+│   └── DoctrineWaybillRepository.php
 └── tests
 ```
 
@@ -78,12 +78,12 @@ into the bounded context.
 │ │ ├── WaybillRepository.php
 │ │ └── WaybillWasGenerated.php
 │ └── Infrastructure
-│ ├── Logging
-│ ├── Messaging
-│ └── Persistence
-│ ├── DoctrineBillRepository.php
-│ ├── DoctrineOrderRepository.php
-│ └── DoctrineWaybillRepository.php
+│   ├── Logging
+│   ├── Messaging
+│   └── Persistence
+│     ├── DoctrineBillRepository.php
+│     ├── DoctrineOrderRepository.php
+│     └── DoctrineWaybillRepository.php
 └── tests
 ```
 
@@ -178,21 +178,21 @@ need to create another module, to group the related implementations by the under
 │ │ ├── WaybillRepository.php
 │ │ └── WaybillWasGenerated.php
 │ └── Infrastructure
-│ ├── Logging
-│ ├── Messaging
-│ └── Persistence
-│ ├── Doctrine
-│ │ ├── DoctrineBillRepository.php
-│ │ ├── DoctrineOrderRepository.php
-│ │ └── DoctrineWaybillRepository.php
-│ ├── InMemory
-│ │ ├── InMemoryBillRepository.php
-│ │ ├── InMemoryOrderRepository.php
-│ │ └── InMemoryWaybillRepository.php
-│ └── Redis
-│ ├── RedisBillRepository.php
-│ ├── RedisOrderRepository.php
-│ └── RedisWaybillRepository.php
+│   ├── Logging
+│   ├── Messaging
+│   └── Persistence
+│     ├── Doctrine
+│     │ ├── DoctrineBillRepository.php
+│     │ ├── DoctrineOrderRepository.php
+│     │ └── DoctrineWaybillRepository.php
+│     ├── InMemory
+│     │ ├── InMemoryBillRepository.php
+│     │ ├── InMemoryOrderRepository.php
+│     │ └── InMemoryWaybillRepository.php
+│     └── Redis
+│       ├── RedisBillRepository.php
+│       ├── RedisOrderRepository.php
+│       └── RedisWaybillRepository.php
 └── tests
 ```
 
