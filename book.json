@@ -1,0 +1,5 @@
+{
+  "plugins": [
+      "gitbook-plugin-fontsettings": "2.0.0"
+  ]
+}
